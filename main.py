@@ -17,8 +17,17 @@ from PIL import ImageFont
 centre = [(214, 148), (695, 148), (1156, 148), (214, 611), (695, 611), (1156, 611)]
 
 def getNotes():
-	lst = ["CodeJam", "7 Cups Of tea", "Java \n Android Dev \n XML"]
-	return lst
+
+	todo_file = open("Todo.txt", 'r') 
+	lst = todo_file.readlines()
+	todos = []	
+	for item in lst:
+		todos.append (item.replace ('#', '\n'))
+
+	print(todos)
+
+	return todos
+
 
 def writeNotes(wallpaper, notes):
 
@@ -46,14 +55,9 @@ def main():
 
 
 	wallpaper.show()
+	wallpaper.save('wallpaper.bmp')
 
 	return
 
 main()
 
-
-
-# txt = ImageDraw.Draw(wallpaper)
-
-# print(txt.multiline_textsize("Hello my ppl \n World"), fnt, 0)
-# txt.multiline_text((0, 0), "Hello my ppl \n World", fill=(0, 0, 0), font=fnt, spacing=0, align='center')
